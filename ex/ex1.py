@@ -7,11 +7,12 @@ import requests
 def getHouseList(url):
     house = []
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.71 Safari/537.1 LBBROWSER'}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) '
+                      'Chrome/21.0.1180.71 Safari/537.1 LBBROWSER'}
     # get从网页获取信息
     res = requests.get(url, headers=headers)
     # 解析内容
-    soup = BeautifulSoup(res.content, 'lxml')
+    soup = BeautifulSoup(res.content, 'html.parser')
     # 房源title
     housename_divs = soup.find_all('div', class_='title')
     for housename_div in housename_divs:
@@ -21,7 +22,7 @@ def getHouseList(url):
             # 标题
             housename.append(housename_a.get_text())
             # 超链接
-            housename.append(housename_a['href'])
+            housename.append(housename_a.get('href'))
             house.append(housename)
     huseinfo_divs = soup.find_all('div', class_='houseInfo')
     for i in range(len(huseinfo_divs)):
@@ -45,9 +46,10 @@ def getHouseList(url):
 # 爬取房屋详细信息：所在区域、套内面积
 def houseinfo(url):
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.71 Safari/537.1 LBBROWSER'}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) '
+                      'Chrome/21.0.1180.71 Safari/537.1 LBBROWSER'}
     res = requests.get(url, headers=headers)
-    soup = BeautifulSoup(res.content, 'lxml')
+    soup = BeautifulSoup(res.content, 'html.parser')
     msg = []
     # 所在区域
     areainfos = soup.find_all('span', class_='info')
