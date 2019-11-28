@@ -11,8 +11,7 @@ class mzitu():
 
     def all_url(self, url):
         html = self.request(url)  # 调用request函数把套图地址传进去会返回给我们一个response
-        all_a = BeautifulSoup(html.text, 'lxml').find(
-            'ul', class_='archives').find_all('a')
+        all_a = BeautifulSoup(html.text, 'lxml').find('ul', class_='archives').find_all('a')
         for a in all_a:
             title = a.get_text()
             old = '早期图片'
@@ -47,16 +46,17 @@ class mzitu():
         f.write(img.content)
         f.close()
 
-    def mkdir(self, path):  # 这个函数创建文件夹
+    @staticmethod
+    def mkdir(path):  # 这个函数创建文件夹
         path = path.strip()
-        isExists = os.path.exists(os.path.join("G:\mzitu", path))
+        isExists = os.path.exists(os.path.join("D:\mzitu", path))
         if not isExists:
-            print(u'建了一个名字叫做', path, u'的文件夹！')
+            print(u'新建文件夹：', path, u'！')
             os.makedirs(os.path.join("D:\mzitu", path))
             os.chdir(os.path.join("D:\mzitu", path))  # 切换到目录
             return True
         else:
-            print(u'名字叫做', path, u'的文件夹已经存在了！')
+            print(u'文件夹：', path, u'已存在！')
             return False
 
     def request(self, url):
