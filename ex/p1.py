@@ -60,7 +60,7 @@ class mzitu():
             return False
 
     def request(self, url):
-        content = requests.get(url, headers=self.headers)
+        content = requests.get(url, headers=self.headers, verify=False)
         return content
 
 
