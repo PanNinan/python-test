@@ -62,6 +62,7 @@ class MeiZiTu:
             return False
 
     def request(self, url):
+        requests.packages.urllib3.disable_warnings()  # 屏蔽warning报错
         content = requests.get(url, headers=self.headers, verify=False)
         return content
 
