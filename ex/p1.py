@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 import os
 
 
-class mzitu():
+class MeiZiTu:
 
     def __init__(self):
         self.headers = {
-            'User-Agent': "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"}
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) '
+                          'Chrome/19.0.1055.1 Safari/535.24'
+        }
 
     def all_url(self, url):
         html = self.request(url)  # 调用request函数把套图地址传进去会返回给我们一个response
@@ -49,11 +51,11 @@ class mzitu():
     @staticmethod
     def mkdir(path):  # 这个函数创建文件夹
         path = path.strip()
-        isExists = os.path.exists(os.path.join("D:\mzitu", path))
-        if not isExists:
+        is_exists = os.path.exists(os.path.join("D:\\images", path))
+        if not is_exists:
             print(u'新建文件夹：', path, u'！')
-            os.makedirs(os.path.join("D:\mzitu", path))
-            os.chdir(os.path.join("D:\mzitu", path))  # 切换到目录
+            os.makedirs(os.path.join("D:\\images", path))
+            os.chdir(os.path.join("D:\\images", path))  # 切换到目录
             return True
         else:
             print(u'文件夹：', path, u'已存在！')
@@ -64,5 +66,5 @@ class mzitu():
         return content
 
 
-Mzitu = mzitu()
-Mzitu.all_url('http://www.mzitu.com/all')
+speeder = MeiZiTu()
+speeder.all_url('http://www.mzitu.com/all')
