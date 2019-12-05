@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 def _get_timestamp():
     """
-    向 http://www.toutiao.com/search_content/ 发送的请求的参数包含一个时间戳，
+    向 http://www.toutiao.com/api/search/content/ 发送的请求的参数包含一个时间戳，
     该函数获取当前时间戳，并格式化成头条接收的格式。格式为 datetime.today() 返回
     的值去掉小数点后取第一位到倒数第三位的数字。
     """
@@ -68,7 +68,7 @@ def get_photo_urls(req, timeout=10):
         # 这里 decode 默认为 utf-8 编码，但返回的内容中含有部分非 utf-8 的内容，会导致解码失败
         # 所以我们使用 ignore 忽略这部分内容
         soup = BeautifulSoup(res.read().decode(errors='ignore'), 'html.parser')
-        article_main = soup.find('div', id='article-main')
+        article_main = soup.find('div', attrs={'class': 'article-box'})
 
         if not article_main:
             print("无法定位到文章主体...")
@@ -77,7 +77,7 @@ def get_photo_urls(req, timeout=10):
         heading = article_main.h1.string
 
         if '街拍' not in heading:
-            print("这不是街拍的文章！！！")
+            # print("！！！")
             return
 
         img_list = [img.get('src') for img in article_main.find_all('img') if img.get('src')]
@@ -113,14 +113,15 @@ if __name__ == '__main__':
         query_data = {
             'offset': offset,
             'format': 'json',
-            'keyword': '街拍',
+            'keyword': '手机',
             'autoload': 'true',
             'count': 20,  # 每次返回 20 篇文章
             '_': timestamp
         }
-        query_url = 'http://www.toutiao.com/search_content/' + '?' + _get_query_string(query_data)
+        query_url = 'http://www.toutiao.com/api/search/content/' + '?' + _get_query_string(query_data)
         article_req = request.Request(query_url, headers=request_headers)
         article_urls = get_article_urls(article_req)
+        print(article_urls)
 
         # 如果不再返回数据，说明全部数据已经请求完毕，跳出循环
         if article_urls is None:
