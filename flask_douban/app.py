@@ -1,7 +1,14 @@
 import datetime
 import sqlite3
 
+import jieba
+import numpy as np
+from PIL import Image
 from flask import Flask, render_template
+
+# from matplotlib import pyplot as plt
+# from wordcloud import WordCloud
+
 
 app = Flask(__name__)
 
@@ -48,7 +55,22 @@ def word():
     cur = conn.cursor()
     sql = "select instroduction from movie_250"
     data = cur.execute(sql)
-    return render_template("word.html")
+    text = ""
+    for item in data:
+        text += item[0]
+    cur.close()
+    conn.close()
+    cut = jieba.cut(text)
+    string = ' '.join(cut)
+    img = Image.open(r'./static/images/back.jpg')
+    img_array = np.array(img)
+    # wc = WordCloud(
+    #     background_color='white',
+    #     mask=img_array,
+    #     font_path="微软雅黑.ttf"
+    # )
+    # wc.generate_from_text(string)
+    return render_template("word.html", string=string)
 
 
 @app.route('/team')
