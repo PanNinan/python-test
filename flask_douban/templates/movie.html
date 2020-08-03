@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>The Parallel Website Template | Home</title>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup1.css">
+    <link href="static/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/prettyPhoto.css">
+    <!--  jquery plguin -->
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <!--start slider -->
+    <link rel="stylesheet" href="static/css/fwslider.css" media="all">
+    <script src="static/js/jquery-ui.min.js"></script>
+    <script src="static/js/css3-mediaqueries.js"></script>
+</head>
+<body style="color: whitesmoke">
+<!-- start header -->
+<div class="header_bg">
+    <div class="wrap">
+        <div class="header">
+            <div class="logo">
+                <h1><a href="index.html"><img src="static/images/logo.png" alt=""/></a></h1>
+            </div>
+            <div class="h_right">
+                <ul class="menu">
+                    <li class="active"><a href="/">首页</a></li>
+                    <li><a href="/movie" class="scroll">电影</a></li>
+                    <li><a href="/score" class="scroll">评分</a></li>
+                    <li><a href="/word" class="scroll">词云</a></li>、
+                    <li class="last"><a href="/team" class="scroll">团队</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-----------service------------>
+<div class="sevice" id="services">
+    <div class="wrap">
+        <div class="service-grids">
+            <h2>豆瓣电影TOP250数据分析</h2>
+            <div class="images_1_of_4">
+                <img src="static/images/cal.png">
+                <h3><a href="/movie">250 经典电影</a></h3>
+            </div>
+            <div class="images_1_of_4">
+                <img src="static/images/port.png">
+                <h3><a href="/score">评分统计</a></h3>
+            </div>
+            <div class="images_1_of_4">
+                <img src="static/images/recyle.png">
+                <h3><a href="/word">词汇统计</a></h3>
+            </div>
+            <div class="images_1_of_4">
+                <img src="static/images/camera.png">
+                <h3><a href="/team">团队成员</a></h3>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-----------//service//------------>
+
+<div id="cbp-so-scroller" class="cbp-so-scroller">
+    <!--Portfolio-->
+    <div id="portfolio" class="clearfix">
+        <div class="portfolio-bg"></div>
+        <div class="typo1">
+            <div class="wrapper clearfix">
+                <div class="section-title">
+                    <h3 class="heading">豆瓣电影top250</h3>
+                    <h6></h6>
+                </div><!--end:section-title-->
+            </div><!--end:wrapper-->
+
+            <table class="table table-bordered">
+                    <tr>
+                        <td>排名</td>
+                        <td>名称</td>
+                        <td>外国名称</td>
+                        <td>评分</td>
+                        <td>评价人数</td>
+                        <td>概述</td>
+                        <td>其他信息</td>
+                    </tr>
+                    {% for item in data_list %}
+                        <tr>
+                            <td>{{ item[0] }}</td>
+                            <td>{{ item[1] }}</td>
+                            <td>{{ item[2] }}</td>
+                            <td>{{ item[5] }}</td>
+                            <td>{{ item[6] }}</td>
+                            <td>{{ item[7] }}</td>
+                            <td>{{ item[8] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div><!--end:typo1-->
+    </div>
+</div>
+
+
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+</body>
+</html>
