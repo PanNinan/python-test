@@ -1,5 +1,7 @@
 import os
 import re
+import time
+
 import requests
 import xlwt
 from bs4 import BeautifulSoup
@@ -13,59 +15,56 @@ self_header = {
 
 
 def main():
+    start = time.time()
     data_list = ask_url_for_data()
-    save_path = base_path + r'/tmp/'
+    save_path = base_path + r'/tmp'
     save_data(data_list, save_path, 'xls')
+    end = time.time()
+    print('采集完成，总耗时：%s' % (end - start))
     return
 
 
 def ask_url_for_data():
     # 循环请求分页页面
     data_list = []
-    for i in range(0, 26):
-        url = base_url + str(i * 10)
-        data = get_single_page_data(url)
-        data_list += data
+    for i in range(0, 10):
+        url = base_url + str(i * 25)
+        print('正在采集：' + url)
+        response = requests.get(url, headers=self_header)
+        response.encoding = "utf-8"
+        html = response.text
+        bs = BeautifulSoup(html, "lxml")
+        divs = bs.find_all(name="div", class_="item")
+        for item in divs:
+            data = []
+            titles = item.find_all(name="span", class_="title")
+            if 2 == len(titles):
+                title_zh = titles[0].get_text(strip=True)
+                title_en = titles[1].get_text(strip=True).replace("/", "")
+            else:
+                title_zh = titles[0].get_text(strip=True)
+                title_en = ''
+            data.append(title_zh)
+            data.append(title_en)
+            pic_href = item.find(name="img")['src']
+            data.append(pic_href)
+            info_url = item.find(name="a")['href']
+            data.append(info_url)
+            rating_num = item.find(name="span", class_="rating_num").get_text()
+            data.append(rating_num)
+            rate_person = item.select(".star span")[-1].get_text()
+            rate_person_num = re.findall(r"\d+\.?\d*", rate_person)[0]
+            data.append(rate_person_num)
+            inq = item.find(name="span", class_="inq")
+            if inq is not None:
+                inq = inq.get_text(strip=True)
+            else:
+                inq = ''
+            data.append(inq)
+            summary = item.find(name="div", class_="bd").p.get_text(strip=True)
+            data.append(summary)
+            data_list.append(data)
     return data_list
-
-
-def get_single_page_data(url):
-    page_data = []
-    response = requests.get(url, headers=self_header)
-    response.encoding = "utf-8"
-    html = response.text
-    bs = BeautifulSoup(html, "lxml")
-    divs = bs.find_all(name="div", class_="item")
-    for item in divs:
-        data = []
-        titles = item.find_all(name="span", class_="title")
-        if 2 == len(titles):
-            title_zh = titles[0].get_text(strip=True)
-            title_en = titles[1].get_text(strip=True).replace("/", "")
-        else:
-            title_zh = titles[0].get_text(strip=True)
-            title_en = ''
-        data.append(title_zh)
-        data.append(title_en)
-        pic_href = item.find(name="img")['src']
-        data.append(pic_href)
-        info_url = item.find(name="a")['href']
-        data.append(info_url)
-        rating_num = item.find(name="span", class_="rating_num").get_text()
-        data.append(rating_num)
-        rate_person = item.select(".star span")[-1].get_text()
-        rate_person_num = re.findall(r"\d+\.?\d*", rate_person)[0]
-        data.append(rate_person_num)
-        inq = item.find(name="span", class_="inq")
-        if inq is not None:
-            inq = inq.get_text(strip=True)
-        else:
-            inq = ''
-        data.append(inq)
-        summary = item.find(name="div", class_="bd").p.get_text(strip=True)
-        data.append(summary)
-        page_data.append(data)
-    return page_data
 
 
 def save_data(data_list, save_path, save_type='xls'):
@@ -90,7 +89,8 @@ def save2xls(data_list, save_path):
         tmp_data = data_list[i]
         for j, value in enumerate(tmp_data):
             worksheet.write(i + 1, j, value)
-    workbook.save(save_path + '\\豆瓣电影TOP250.xls')
+    workbook.save(save_path + '/豆瓣电影TOP250.xls')
+    print('已保存至：' + save_path + '/豆瓣电影TOP250.xls')
 
 
 def save2db(data_list, save_path):
