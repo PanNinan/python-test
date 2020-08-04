@@ -13,8 +13,9 @@ self_header = {
 
 
 def main(baseurl):
+    txt_name = '_'.join(baseurl.split('/')[-4:-1]) + '.txt'
     url_list = parse_page(baseurl)  # 当前页面所有页面url列表
-    save_from_list(url_list)
+    save_from_list(url_list, txt_name)
     next_url = get_next_url(baseurl)
     if next_url == baseurl:
         return
@@ -54,8 +55,14 @@ def get_word(url):
     return div[0].p.get_text()
 
 
-def save_from_list(url_list):
-    with open(base_path + r'/tmp/鱼龙舞.txt', 'a', encoding='utf-8') as file:
+def create_dir(save_path):
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
+
+def save_from_list(url_list, txt_name):
+    create_dir(base_path + r'/tmp/')
+    with open(base_path + r'/tmp/' + txt_name, 'a', encoding='utf-8') as file:
         for url in url_list:
             html = get_html(url)
             bs = BeautifulSoup(html, "lxml")
