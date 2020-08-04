@@ -14,7 +14,7 @@ class mzitu():
         }
 
     def all_url(self, url):
-        self.headers['Referer'] = url;
+        self.headers['Referer'] = url
         html = self.request(url)  # 调用request函数把套图地址传进去会返回给我们一个response
         # title
         title = BeautifulSoup(html.text, 'lxml').find(
