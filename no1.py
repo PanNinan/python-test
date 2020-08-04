@@ -23,10 +23,10 @@ def main(baseurl):
     return
 
 
-def get_html(url, encode="gbk"):
+def get_html(url):
     response = requests.get(url, headers=self_header)
-    response.encoding = encode
-    return response.text
+    byte_text = response.text.encode('utf-8')
+    return str(byte_text, encoding="utf8")
 
 
 def parse_page(url):
@@ -51,20 +51,18 @@ def get_word(url):
     html = get_html(url)
     bs = BeautifulSoup(html, "lxml")
     div = bs.find_all(name="div", class_="page-content font-large")
-    return div[0].p.get_text().replace(u'\xa0', u' ')
+    return div[0].p.get_text()
 
 
 def save_from_list(url_list):
-    with open(base_path + r'/tmp/鱼龙舞.txt', 'a') as file:
+    with open(base_path + r'/tmp/鱼龙舞.txt', 'a', encoding='utf-8') as file:
         for url in url_list:
-            response = requests.get(url, headers=self_header)
-            response.encoding = "gbk"
-            html = response.text
+            html = get_html(url)
             bs = BeautifulSoup(html, "lxml")
             div = bs.find_all(name="div", class_="page-content font-large")
             if bs.center is None:  # 页内无分页
                 text = div[0].p.text
-                file.write(text.replace(u'\xa0', u' ') + "\r")  # 替换中文的空格
+                file.write(text + "\r")  # 替换中文的空格
                 print('页面：' + url + '内容写入成功！')
             else:
                 pages = bs.center
