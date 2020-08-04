@@ -1,4 +1,5 @@
 import os
+import time
 
 import requests
 from bs4 import BeautifulSoup
@@ -14,9 +15,9 @@ class mzitu():
         }
 
     def all_url(self, url):
+        start = time.time()
         self.headers['Referer'] = url
         html = self.request(url)  # 调用request函数把套图地址传进去会返回给我们一个response
-        # title
         title = BeautifulSoup(html.text, 'lxml').find(
             'h2', class_='main-title').get_text()
         print(u'开始保存：', title)
@@ -33,6 +34,8 @@ class mzitu():
         for page in range(1, int(last_num) + 1):
             page_url = url + '/' + str(page)
             self.img(page_url)  # 调用img函数
+        end = time.time()
+        print('总耗时：%s' % (end - start))
 
     def html(self, href):  # 这个函数是处理套图地址获得图片的页面地址
         html = self.request(href)
@@ -73,5 +76,6 @@ class mzitu():
         return content
 
 
-Mzitu = mzitu()
-Mzitu.all_url('https://www.mzitu.com/62939')
+if __name__ == '__main__':
+    Mzitu = mzitu()
+    Mzitu.all_url('https://www.mzitu.com/62939')
