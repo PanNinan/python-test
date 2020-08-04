@@ -5,7 +5,8 @@ import requests
 
 search_key = input("请输入关键字\n")
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/74.0.3729.169 Safari/537.36',
     'Referer': 'https://www.mzitu.com/'}
 
 response = requests.get('https://www.mzitu.com/search/' +
