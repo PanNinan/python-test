@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /venv
 *.log
 /.idea
 /tmp
+=======
+.idea
+tmp/
+>>>>>>> develop

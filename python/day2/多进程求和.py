@@ -16,7 +16,8 @@ def main():
     index = 0
     # 启动8个进程,将数据切片后计算
     for _ in range(8):
-        p = Process(target=task_handler, args=(number_list[index:index + 12500000], result_queue))
+        p = Process(target=task_handler, args=(
+            number_list[index:index + 12500000], result_queue))
         index += 12500000
         processes.append(p)
         p.start()
