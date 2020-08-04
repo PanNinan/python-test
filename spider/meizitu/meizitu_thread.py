@@ -14,7 +14,7 @@ def mkdir(path):  # 这个函数创建文件夹
     if not is_exists:
         print(u'新建文件夹：', path)
         os.makedirs(os.path.join("D:/code/tmp", path))
-        os.chdir(os.path.join("D:/code/tmp", path))  # 切换到目录
+        # os.chdir(os.path.join("D:/code/tmp", path))  # 切换到目录
         return True
     else:
         return False
@@ -28,8 +28,8 @@ headers = {
 }
 
 
-def all_url(url, queue):
-    html_1 = request(url)  # 调用request函数把套图地址传进去会返回给我们一个response
+def all_url(page_url, uqueue):
+    html_1 = request(page_url)  # 调用request函数把套图地址传进去会返回给我们一个response
     # title
     title = BeautifulSoup(html_1.text, 'lxml').find(
         'h2', class_='main-title').get_text()
@@ -44,8 +44,8 @@ def all_url(url, queue):
     # 最后一页页码数
     last_num = last_a.find('span').text
     for page in range(1, int(last_num) + 1):
-        page_url = url + '/' + str(page)
-        queue.put(path + '#' + page_url)
+        page_url = page_url + '/' + str(page)
+        uqueue.put(path + '#' + page_url)
 
 
 def html(href):  # 这个函数是处理套图地址获得图片的页面地址
@@ -78,12 +78,12 @@ def save(img_url, path):  # 这个函数保存图片
     print("%s保存完成！" % name)
 
 
-def request(url):
+def request(request_url):
     try:
-        content = requests.get(url, headers=headers, timeout=5)
+        content = requests.get(request_url, headers=headers, timeout=5)
         return content
     except (ConnectionError, ReadTimeout):
-        print('Crawling Failed', url)
+        print('Crawling Failed', request_url)
         return None
 
 
@@ -91,11 +91,15 @@ if __name__ == '__main__':
     url = 'https://www.mzitu.com/62939'
     start = time.time()
     queue = Queue()
+    if not os.path.exists('D:/code/tmp/'):
+        os.makedirs('D:/code/tmp/')
+    # 抓取所有图片url
     thread_1 = Thread(target=all_url, args=(url, queue,))
     thread_1.daemon = True  # 随主线程退出而退出
     thread_1.start()
     time.sleep(1)
     for index in range(5):
+        # 获取图片内容并保存
         thread = Thread(target=img, args=(queue,))
         thread.daemon = True  # 随主线程退出而退出
         thread.start()
