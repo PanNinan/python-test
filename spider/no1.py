@@ -26,8 +26,8 @@ def main(baseurl):
 
 def get_html(url):
     response = requests.get(url, headers=self_header)
-    byte_text = response.text.encode('utf-8')
-    return str(byte_text, encoding="utf8")
+    byte_text = response.text.encode('utf-8')  # 取文本response.text。 取图片，文件，response.content
+    return str(byte_text, encoding="utf-8")
 
 
 def parse_page(url):
