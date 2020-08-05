@@ -1,4 +1,5 @@
-import json
+# coding:utf-8
+
 import threading
 from queue import Queue
 
@@ -60,7 +61,6 @@ class ParserThread(threading.Thread):
             except Exception as e:
                 print(e)
         print('线程{}退出'.format(self.thread_id))
-        self.file.close()
 
     def parse_data(self, content):
         try:
@@ -81,9 +81,9 @@ flag = False
 
 def main():
     data_queue = Queue()
-    output = open('qiushi.txt', 'a')
+    output = open('../tmp/qiushi.txt', 'a', encoding='utf-8')
     page_queue = Queue(50)
-    for page in range(1, 11):
+    for page in range(1, 31):
         page_queue.put(page)
 
     # 初始化采集线程
@@ -116,6 +116,8 @@ def main():
 
     for thread in parser_threads:
         thread.join()
+
+    output.close()
 
 
 if __name__ == '__main__':
