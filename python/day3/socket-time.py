@@ -1,5 +1,5 @@
-from socket import socket, SOCK_STREAM, AF_INET
 from datetime import datetime
+from socket import socket, SOCK_STREAM, AF_INET
 
 
 def main():

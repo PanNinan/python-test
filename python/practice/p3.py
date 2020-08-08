@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
 
-import requests
-from requests.exceptions import RequestException
-from bs4 import BeautifulSoup
-import bs4
 import os
+
+import bs4
+import requests
+from bs4 import BeautifulSoup
+from requests.exceptions import RequestException
 
 
 class Pic():

@@ -2,9 +2,10 @@
 function _hasClass(elem, className) {
     return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
 }
+
 function _toggleClass(elem, className) {
     var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
-    if ( _hasClass(elem, className) ) {
+    if (_hasClass(elem, className)) {
         while (newClass.indexOf(' ' + className + ' ') >= 0) {
             newClass = newClass.replace(' ' + className + ' ', ' ');
         }
@@ -13,9 +14,10 @@ function _toggleClass(elem, className) {
         elem.className += ' ' + className;
     }
 }
+
 /* ResponsiveMenu Class constructor */
 function ResponsiveMenu(settings) {
-    if(!settings) return;
+    if (!settings) return;
 
     this.nav = document.getElementsByClassName(settings.navClass)[0];
     this.mobile = settings.mobileClass;
@@ -30,52 +32,52 @@ function ResponsiveMenu(settings) {
 
     this.init();
 }
-ResponsiveMenu.prototype.createMenu = function() {
+
+ResponsiveMenu.prototype.createMenu = function () {
     this.mobileElem = document.createElement('div');
     this.mobileElem.className = this.mobile;
     this.nav.appendChild(this.mobileElem);
 };
-ResponsiveMenu.prototype.bindHandlers = function() {
+ResponsiveMenu.prototype.bindHandlers = function () {
     var _self = this;
     var piece = void 0;
 
-    this.mobileElem.addEventListener('click', function() {
-        if(_self.jQuery) {
-            _self.jQuery(_self.toggle).slideToggle(function() {
+    this.mobileElem.addEventListener('click', function () {
+        if (_self.jQuery) {
+            _self.jQuery(_self.toggle).slideToggle(function () {
                 _self.jQuery(this).attr('style', '');
                 _toggleClass(this, _self.navOpen);
                 _toggleClass(_self.toggle, _self.toggleActive);
             });
-        }
-        else {
+        } else {
             _toggleClass(this, _self.navOpen);
             _toggleClass(_self.toggle, _self.toggleActive);
         }
     });
 
-    if( this.innerToggle && !this.jQuery ) {
-        for( piece in this.innerToggle ) {
-            if( !isNaN( parseInt(piece) ) ) {
-                this.innerToggle[piece].addEventListener('click', function() {
+    if (this.innerToggle && !this.jQuery) {
+        for (piece in this.innerToggle) {
+            if (!isNaN(parseInt(piece))) {
+                this.innerToggle[piece].addEventListener('click', function () {
                     _toggleClass(this, _self.innerToggleActive);
                 });
             }
         }
     }
 
-    if( this.jQuery ) {
-        this.jQuery( this.innerToggle ).on({
-            click: function() {
+    if (this.jQuery) {
+        this.jQuery(this.innerToggle).on({
+            click: function () {
                 var trigger = this;
                 var menu = jQuery(this).find('ul');
-                menu.slideToggle(function() {
+                menu.slideToggle(function () {
                     _toggleClass(trigger, _self.innerToggleActive);
                 });
             }
         });
     }
 };
-ResponsiveMenu.prototype.init = function() {
+ResponsiveMenu.prototype.init = function () {
     this.createMenu();
     this.bindHandlers();
 };

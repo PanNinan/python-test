@@ -1,12 +1,12 @@
 #! /usr/bin/env python
 # coding=utf-8
 
-import urllib3
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import re
 import datetime
 import random
+import re
+from urllib.request import urlopen
+
+from bs4 import BeautifulSoup
 
 pages = set()
 random.seed(datetime.datetime.now())

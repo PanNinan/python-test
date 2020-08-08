@@ -1,8 +1,8 @@
 import time
 from queue import Queue
-import threading
-import redis
 from threading import Thread
+
+import redis
 
 # decode_responses为True取出内容自动decode
 # 连接池

@@ -1,8 +1,7 @@
-from bs4 import BeautifulSoup
-import requests
 import base64
-from io import BytesIO
-from PIL import Image
+
+import requests
+from bs4 import BeautifulSoup
 
 
 def get_html(url):

@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 class Point(object):
 
     def __init__(self, x=0, y=0):
@@ -20,10 +21,11 @@ class Point(object):
         distance = sqrt(dx ** 2 + dy ** 2)
         return distance
 
+
 def main():
     p1 = Point(1, 1)
     p1.move_by(1, 2)
-    
+
     p0 = Point()
     p0.move_to(4, -1)
     dis = p1.distance_to(p0)

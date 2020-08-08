@@ -1,10 +1,6 @@
-import requests
 from urllib import request
-import re  # 正则匹配目标文件
-import os
 
 # pic = requests.get('http://pics.sc.chinaz.com/files/pic/pic9/201801/zzpic9947.jpg')
-from requests import HTTPError
 
 if __name__ == '__main__':
     # 1

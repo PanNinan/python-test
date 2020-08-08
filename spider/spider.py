@@ -1,6 +1,6 @@
 import threading  # 导入threading模块
-from queue import Queue  # 导入queue模块
 import time  # 导入time模块
+from queue import Queue  # 导入queue模块
 
 
 # 爬取文章详情页

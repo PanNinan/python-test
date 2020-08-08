@@ -1,15 +1,14 @@
-import re
 import json
-import time
 import random
-
-from pathlib import Path
-from urllib import parse
-from urllib import error
-from urllib import request
+import re
+import time
 from datetime import datetime
 from http.client import IncompleteRead
+from pathlib import Path
 from socket import timeout as socket_timeout
+from urllib import error
+from urllib import parse
+from urllib import request
 
 from bs4 import BeautifulSoup
 

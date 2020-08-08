@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     print(config['DEFAULT']['ServerName'])
 
-    print('-'*50)
+    print('-' * 50)
 
     for key in config['topsecret.server.com']:
         print(key)
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     print(config.options('bitbucket.org'))
     print(config.items('bitbucket.org'))
 
-    print('-'*50)
+    print('-' * 50)
     print(config.get('bitbucket.org', 'user'))
 
     config.add_section('money')
@@ -41,4 +41,3 @@ if __name__ == '__main__':
 
     with open('example.ini', 'w') as f:
         config.write(f)
-

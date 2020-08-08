@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 class Triangle(object):
 
     def __init__(self, a, b, c):
@@ -17,6 +18,7 @@ class Triangle(object):
     def area(self):
         half = self.perimeter() / 2
         return sqrt(half * (half - self._a) * (half - self._b) * (half - self._c))
+
 
 def main():
     a, b, c = (3, 4, 5)

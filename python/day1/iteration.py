@@ -8,4 +8,3 @@ print(list2)
 
 print(next(list1))
 print(list1.__next__())
-

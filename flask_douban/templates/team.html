@@ -2,15 +2,15 @@
 <html>
 <head>
     <title>The Parallel Website Template | Home</title>
-    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup1.css">
-    <link rel="stylesheet" type="text/css" href="static/css/prettyPhoto.css">
+    <link href="static/css/style.css" media="all" rel="stylesheet" type="text/css"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="static/css/magnific-popup1.css" rel="stylesheet" type="text/css">
+    <link href="static/css/prettyPhoto.css" rel="stylesheet" type="text/css">
     <!--  jquery plguin -->
-    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script src="static/js/jquery.min.js" type="text/javascript"></script>
     <!--start slider -->
-    <link rel="stylesheet" href="static/css/fwslider.css" media="all">
+    <link href="static/css/fwslider.css" media="all" rel="stylesheet">
     <script src="static/js/jquery-ui.min.js"></script>
     <script src="static/js/css3-mediaqueries.js"></script>
     <script src="static/js/fwslider.js"></script>
@@ -55,15 +55,16 @@
     <div class="wrap">
         <div class="header">
             <div class="logo">
-                <h1><a href="index.html"><img src="static/images/logo.png" alt=""/></a></h1>
+                <h1><a href="index.html"><img alt="" src="static/images/logo.png"/></a></h1>
             </div>
             <div class="h_right">
                 <ul class="menu">
                     <li class="active"><a href="/">首页</a></li>
-                    <li><a href="/movie" class="scroll">电影</a></li>
-                    <li><a href="/score" class="scroll">评分</a></li>
-                    <li><a href="/word" class="scroll">词云</a></li>、
-                    <li class="last"><a href="/team" class="scroll">团队</a></li>
+                    <li><a class="scroll" href="/movie">电影</a></li>
+                    <li><a class="scroll" href="/score">评分</a></li>
+                    <li><a class="scroll" href="/word">词云</a></li>
+                    、
+                    <li class="last"><a class="scroll" href="/team">团队</a></li>
                 </ul>
 
                 <script src="static/js/classie.js"></script>
@@ -75,15 +76,15 @@
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="/home">Home</a></li>
-                        <li class="nav-item"><a href="/services" class="scroll">Services</a></li>
-                        <li class="nav-item"><a href="/portfolio" class="scroll">Portfolio</a></li>
-                        <li class="nav-item"><a href="/pricing" class="scroll">Pricing</a></li>
-                        <li class="nav-item"><a href="/about" class="scroll">About</a></li>
-                        <li class="nav-item"><a href="/contact" class="scroll">Contact</a></li>
+                        <li class="nav-item"><a class="scroll" href="/services">Services</a></li>
+                        <li class="nav-item"><a class="scroll" href="/portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="scroll" href="/pricing">Pricing</a></li>
+                        <li class="nav-item"><a class="scroll" href="/about">About</a></li>
+                        <li class="nav-item"><a class="scroll" href="/contact">Contact</a></li>
                         <div class="clear"></div>
                     </ul>
                 </nav>
-                <script type="text/javascript" src="static/js/responsive.menu.js"></script>
+                <script src="static/js/responsive.menu.js" type="text/javascript"></script>
                 <!-- end smart_nav * -->
             </div>
             <div class="clear"></div>
@@ -117,9 +118,9 @@
 </div>
 <!-----------//service//------------>
 
-<div id="cbp-so-scroller" class="cbp-so-scroller">
+<div class="cbp-so-scroller" id="cbp-so-scroller">
     <!--Portfolio-->
-    <div id="portfolio" class="clearfix">
+    <div class="clearfix" id="portfolio">
         <div class="portfolio-bg"></div>
         <div class="typo1">
             <div class="wrapper clearfix">
@@ -128,24 +129,24 @@
                     <h6></h6>
                 </div><!--end:section-title-->
 
-                <div id="options" class="clearfix">
-                    <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                        <li><a href="#filter" data-option-value=".web-design">Web-design</a></li>
-                        <li><a href="#filter" data-option-value=".photo">UI Design</a></li>
-                        <li><a href="#filter" data-option-value=".ios-app">Prototype</a></li>
-                        <li><a href="#filter" data-option-value=".graphic">Photography</a></li>
+                <div class="clearfix" id="options">
+                    <ul class="option-set clearfix" data-option-key="filter" id="filters">
+                        <li><a data-option-value=".web-design" href="#filter">Web-design</a></li>
+                        <li><a data-option-value=".photo" href="#filter">UI Design</a></li>
+                        <li><a data-option-value=".ios-app" href="#filter">Prototype</a></li>
+                        <li><a data-option-value=".graphic" href="#filter">Photography</a></li>
                     </ul><!--end:filters-->
                 </div>
 
             </div><!--end:wrapper-->
 
-            <ul id="container" class="clickable cs-style-5 grid clearfix isotope"
+            <ul class="clickable cs-style-5 grid clearfix isotope" id="container"
                 style="position: relative; overflow: hidden; height: 534px; width: 1475px;">
 
                 <li class="element photo isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 0px, 0px);">
                     <figure>
-                        <img src="static/images/pf-1.jpg" alt="">
+                        <img alt="" src="static/images/pf-1.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -154,8 +155,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-1.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-1.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -166,7 +167,7 @@
                 <li class="element web-design isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(295px, 0px, 0px);">
                     <figure>
-                        <img src="static/images/pf-2.jpg" alt="">
+                        <img alt="" src="static/images/pf-2.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -175,8 +176,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-2.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-2.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -187,7 +188,7 @@
                 <li class="element ios-app isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(590px, 0px, 0px);">
                     <figure>
-                        <img src="static/images/pf-3.jpg" alt="">
+                        <img alt="" src="static/images/pf-3.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -196,8 +197,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-3.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-3.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -208,7 +209,7 @@
                 <li class="element graphic isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(885px, 0px, 0px);">
                     <figure>
-                        <img src="static/images/pf-4.jpg" alt="">
+                        <img alt="" src="static/images/pf-4.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -217,8 +218,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-4.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-4.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -229,7 +230,7 @@
                 <li class="element photo isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1180px, 0px, 0px);">
                     <figure>
-                        <img src="static/images/pf-5.jpg" alt="">
+                        <img alt="" src="static/images/pf-5.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -238,8 +239,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-5.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-5.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -250,7 +251,7 @@
                 <li class="element web-design isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 267px, 0px);">
                     <figure>
-                        <img src="static/images/pf-6.jpg" alt="">
+                        <img alt="" src="static/images/pf-6.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -259,8 +260,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-6.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-6.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -271,7 +272,7 @@
                 <li class="element ios-app isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(295px, 267px, 0px);">
                     <figure>
-                        <img src="static/images/pf-7.jpg" alt="">
+                        <img alt="" src="static/images/pf-7.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -280,8 +281,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-7.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-7.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
 
@@ -293,7 +294,7 @@
                 <li class="element graphic isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(590px, 267px, 0px);">
                     <figure>
-                        <img src="static/images/pf-8.jpg" alt="">
+                        <img alt="" src="static/images/pf-8.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -302,8 +303,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-8.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-8.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -313,7 +314,7 @@
                 <li class="element photo isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(885px, 267px, 0px);">
                     <figure>
-                        <img src="static/images/pf-9.jpg" alt="">
+                        <img alt="" src="static/images/pf-9.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -322,8 +323,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-9.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-9.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                             </footer>
                         </figcaption>
@@ -334,7 +335,7 @@
                 <li class="element web-design isotope-item"
                     style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1180px, 267px, 0px);">
                     <figure>
-                        <img src="static/images/pf-10.jpg" alt="">
+                        <img alt="" src="static/images/pf-10.jpg">
                         <figcaption>
                             <h3><a href="#">This is project name</a></h3>
                             <div class="meta-box clearfix">
@@ -343,8 +344,8 @@
                                 <span class="entry-categories"><a href="#">photo</a></span>
                             </div>
                             <footer>
-                                <div id="nivo-lightbox-demo"><p><a href="static/images/pf-10.jpg"
-                                                                   data-lightbox-gallery="gallery1"
+                                <div id="nivo-lightbox-demo"><p><a data-lightbox-gallery="gallery1"
+                                                                   href="static/images/pf-10.jpg"
                                                                    id="nivo-lightbox-demo"> View</a></p></div>
                         </figcaption>
                     </figure>
@@ -356,7 +357,7 @@
     </div>
 </div>
 <!-- portfolio_script_javascript-->
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery.min.js" type="text/javascript"></script>
 <script src="static/js/jquery.isotope.min.js"></script>
 <script src="static/js/jquery.prettyPhoto.js"></script>
 <script src="static/js/custom.js"></script>
@@ -505,72 +506,72 @@
                     </div>
                 </div>
                 <!-----pop-up-grid---->
-                <div id="small-dialog" class="mfp-hide">
+                <div class="mfp-hide" id="small-dialog">
                     <div class="pop_up">
                         <div class="payment-online-form-left">
                             <form>
                                 <h4><span class="shipping"> </span>Shipping</h4>
                                 <ul>
-                                    <li><input class="text-box-dark" type="text" value="Frist Name"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Frist Name';}"></li>
-                                    <li><input class="text-box-dark" type="text" value="Last Name"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Frist Name';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Frist Name"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Last Name';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Last Name"></li>
                                 </ul>
                                 <ul>
-                                    <li><input class="text-box-dark" type="text" value="Email"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Email';}"></li>
-                                    <li><input class="text-box-dark" type="text" value="Company Name"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Company Name';}"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Email';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Email"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Company Name';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Company Name"></li>
                                 </ul>
                                 <ul>
-                                    <li><input class="text-box-dark" type="text" value="Phone"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Phone';}"></li>
-                                    <li><input class="text-box-dark" type="text" value="Address"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Address';}"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Phone';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Phone"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Address';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Address"></li>
                                     <div class="clear"></div>
                                 </ul>
                                 <div class="clear"></div>
                                 <ul class="payment-type">
                                     <h4><span class="payment"> </span> Payments</h4>
                                     <li><span class="col_checkbox">
-													<input id="3" class="css-checkbox1" type="checkbox">
-													<label for="3" name="demo_lbl_1" class="css-label1"> </label>
+													<input class="css-checkbox1" id="3" type="checkbox">
+													<label class="css-label1" for="3" name="demo_lbl_1"> </label>
 													<a class="visa" href="#"> </a>
 													</span>
 
                                     </li>
                                     <li>
 													<span class="col_checkbox">
-														<input id="4" class="css-checkbox2" type="checkbox">
-														<label for="4" name="demo_lbl_2" class="css-label2"> </label>
+														<input class="css-checkbox2" id="4" type="checkbox">
+														<label class="css-label2" for="4" name="demo_lbl_2"> </label>
 														<a class="paypal" href="#"> </a>
 													</span>
                                     </li>
                                     <div class="clear"></div>
                                 </ul>
                                 <ul>
-                                    <li><input class="text-box-dark" type="text" value="Card Number"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
-                                    <li><input class="text-box-dark" type="text" value="Name on card"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Card Number';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Card Number"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Name on card';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Name on card"></li>
                                     <div class="clear"></div>
                                 </ul>
                                 <ul>
-                                    <li><input class="text-box-light hasDatepicker" type="text" id="datepicker"
-                                               value="Expiration Date" onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em
+                                    <li><input class="text-box-light hasDatepicker" id="datepicker" onblur="if (this.value == '') {this.value = 'Expiration Date';}"
+                                               onfocus="this.value = '';" type="text"
+                                               value="Expiration Date"><em
                                             class="pay-date"> </em></li>
-                                    <li><input class="text-box-dark" type="text" value="Security Code"
-                                               onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
+                                    <li><input class="text-box-dark" onblur="if (this.value == '') {this.value = 'Security Code';}" onfocus="this.value = '';"
+                                               type="text"
+                                               value="Security Code"></li>
                                     <div class="clear"></div>
                                 </ul>
                                 <ul class="payment-sendbtns">
@@ -722,15 +723,15 @@
         <div class="contact-form">
             <div class="form">
                 <h3>MAIL</h3>
-                <form method="post" action="#">
-                    <input type="text" class="textbox" value=" Name" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Name';}">
-                    <input type="text" class="textbox" value="Email" onfocus="this.value = '';"
-                           onblur="if (this.value == '') {this.value = 'Email';}">
+                <form action="#" method="post">
+                    <input class="textbox" onblur="if (this.value == '') {this.value = 'Name';}" onfocus="this.value = '';" type="text"
+                           value=" Name">
+                    <input class="textbox" onblur="if (this.value == '') {this.value = 'Email';}" onfocus="this.value = '';" type="text"
+                           value="Email">
                     <div class="clear"></div>
                     <div>
-                        <textarea value="Message:" onfocus="this.value = '';"
-                                  onblur="if (this.value == '') {this.value = ' Message';}">Message</textarea>
+                        <textarea onblur="if (this.value == '') {this.value = ' Message';}" onfocus="this.value = '';"
+                                  value="Message:">Message</textarea>
                     </div>
                     <div class="span4">
                         <a href="#">

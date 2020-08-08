@@ -7,6 +7,15 @@ from urllib import request
 
 from bs4 import BeautifulSoup
 
+"""
+将爬取的文章内容写入文件
+Parameters:
+    name - 章节名称(string)
+    path - 当前路径下,小说保存名称(string)
+    text - 章节内容(string)
+Returns:
+"""
+
 
 def writer(name, path, text):
     write_flag = True
@@ -30,15 +39,10 @@ class Download(object):
                           'like Gecko) Chrome/18.0.1025.166  Safari/535.19', }
 
     """
-    函数说明:获取下载链接
-
-    Parameters:
-        无
-
-    Returns:
-        novel_name + '.txt' - 保存的小说名(string)
-        numbers - 章节数(int)
-        download_dict - 保存章节名称和下载链接的字典(dict)
+    获取下载链接
+    novel_name + '.txt' - 保存的小说名(string)
+    numbers - 章节数(int)
+    download_dict - 保存章节名称和下载链接的字典(dict)
     """
 
     def get_download_url(self):
@@ -51,15 +55,15 @@ class Download(object):
         download_soup = BeautifulSoup(str(chapters), 'lxml')
         novel_name = str(download_soup.dl.dt).split("》")[0][5:]
         flag_name = "《" + novel_name + "》" + "正文卷"
-        numbers = (len(download_soup.dl.contents) - 1) / 2 - 8
+        # number = (len(download_soup.dl.contents) - 1) / 2 - 8
         download_dict = collections.OrderedDict()
         begin_flag = False
-        numbers = 1
+        number = 1
         for child in download_soup.dl.children:
             if child != '\n':
                 if child.string == u"%s" % flag_name:
                     begin_flag = True
-                if True == begin_flag and child.a is not None:
+                if begin_flag is True and child.a is not None:
                     download_url = "https://www.biqukan.com" + child.a.get('href')
                     download_name = child.string
                     if str(download_name).find('章') != -1:
@@ -69,18 +73,14 @@ class Download(object):
                         names = ['', str(download_name)]
                         name = str(download_name)
                     if name:
-                        download_dict['第' + str(numbers) + '章 ' + names[1]] = download_url
-                        numbers += 1
-        return novel_name + '.txt', numbers, download_dict
+                        download_dict['第' + str(number) + '章 ' + names[1]] = download_url
+                        number += 1
+        return novel_name + '.txt', number, download_dict
 
     """
-    函数说明:爬取文章内容
-
-    Parameters:
-        url - 下载连接(string)
-
-    Returns:
-        soup_text - 章节内容(string)
+    爬取文章内容
+    Parameters:url - 下载连接(string)
+    Returns:soup_text - 章节内容(string)
     """
 
     def downloader(self, url):
@@ -91,17 +91,6 @@ class Download(object):
         texts = soup_texts.find_all(id='content', class_='showtxt')
         soup_text = BeautifulSoup(str(texts), 'lxml').div.text.replace('\xa0', '')
         return soup_text
-
-    """
-    函数说明:将爬取的文章内容写入文件
-
-    Parameters:
-        name - 章节名称(string)
-        path - 当前路径下,小说保存名称(string)
-        text - 章节内容(string)
-
-    Returns:
-    """
 
 
 if __name__ == "__main__":

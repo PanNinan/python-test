@@ -8,7 +8,6 @@ class Test:
 
 
 class Person(object):
-
     # 限定Person对象只能绑定_name, _age和_gender属性
     __slots__ = ('_name', '_age', '_gender')
 
@@ -48,7 +47,7 @@ def main():
     John_name = John.name
     print(John_name)
     John.age = 18
-    #John.name = 'John-117' # can't set attribute
+    # John.name = 'John-117' # can't set attribute
     John.play()
 
 

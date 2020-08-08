@@ -1,5 +1,4 @@
 # encoding = utf-8
-import random
 import threading
 import time
 from queue import Queue
@@ -112,21 +111,13 @@ chapters = []
 
 thread_list = []
 if __name__ == '__main__':
-    rs = redis.Redis(connection_pool=conn_pool)
-    data = rs.zrange('ebook', 0, -1, desc=False, withscores=True)
-    with open('xxx.txt', 'a', encoding="utf-8") as file:
-        for item in data:
-            file.write(item[0])
-    file.close()
-    exit()
-
     begin = time.time()
     spider_threads = []
     chapter_queue = Queue()
     T = threading.Thread(target=get_chapter_page_list, args=(target_url, chapter_queue,))
     T.start()
     T.join()
-    for i in range(10):
+    for i in range(15):
         t = threading.Thread(target=get_detail, args=(chapter_queue,))
         spider_threads.append(t)
     for t in spider_threads:
@@ -134,31 +125,11 @@ if __name__ == '__main__':
     for t in spider_threads:
         t.join()
     print('\n子线程运行完毕')
+    rs = redis.Redis(connection_pool=conn_pool)
+    data = rs.zrange('ebook', 0, -1, desc=False, withscores=True)
+    with open('xxx.txt', 'a', encoding="utf-8") as file:
+        for item in data:
+            file.write(item[0])
+    file.close()
     end = time.time()
     print('下载完毕，总耗时', end - begin, '秒')
-    # with open('1.txt', 'a', encoding="utf-8") as file:
-    # file.close()
-    # begin = time.time()
-    # chaptername = Queue()  # 存放小说章节地址
-    # for id in range(11):
-    #     thread1 = MyTread(id, str(id), id)
-    #     thread_list.append(thread1)
-    # for t in thread_list:
-    #     t.setDaemon(False)
-    #     t.start()
-    # 
-    # for t in thread_list:
-    #     t.join()
-    # print('\n子线程运行完毕')
-    # txtcontent1 = sorted(txt_content)
-    # file = codecs.open('page_url.txt', 'w', 'utf-8')  # 小说存放在本地的地址
-    # chaptercount = len(chaptername)
-    # 
-    # # 写入文件中
-    # for ch in range(chaptercount):
-    #     title = '\n           第' + str(ch + 1) + '章  ' + str(chaptername[ch]) + '         \n\n'
-    #     content = str(txt_content[txtcontent1[ch]])
-    #     file.write(title + content)
-    # file.close()
-    # end = time.time()
-    # print('下载完毕，总耗时', end - begin, '秒')
