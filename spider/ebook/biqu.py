@@ -7,12 +7,22 @@ from urllib import request
 
 from bs4 import BeautifulSoup
 
-"""
-类说明:下载《笔趣看》网小说: url:https://www.biqukan.com/
-"""
+
+def writer(name, path, text):
+    write_flag = True
+    with open(path, 'a', encoding='utf-8') as f:
+        f.write(name + '\n\n')
+        for each in text:
+            if each == 'h':
+                write_flag = False
+            if write_flag is True and each != ' ':
+                f.write(each)
+            if write_flag is True and each == '\r':
+                f.write('\n')
+        f.write('\n\n')
 
 
-class download(object):
+class Download(object):
     def __init__(self, target):
         self.__target_url = target
         self.__head = {
@@ -29,9 +39,6 @@ class download(object):
         novel_name + '.txt' - 保存的小说名(string)
         numbers - 章节数(int)
         download_dict - 保存章节名称和下载链接的字典(dict)
-
-    Modify:
-        2017-05-06
     """
 
     def get_download_url(self):
@@ -52,11 +59,15 @@ class download(object):
             if child != '\n':
                 if child.string == u"%s" % flag_name:
                     begin_flag = True
-                if begin_flag == True and child.a != None:
+                if True == begin_flag and child.a is not None:
                     download_url = "https://www.biqukan.com" + child.a.get('href')
                     download_name = child.string
-                    names = str(download_name).split('章')
-                    name = charter.findall(names[0] + '章')
+                    if str(download_name).find('章') != -1:
+                        names = str(download_name).split('章')
+                        name = charter.findall(names[0] + '章')
+                    else:
+                        names = ['', str(download_name)]
+                        name = str(download_name)
                     if name:
                         download_dict['第' + str(numbers) + '章 ' + names[1]] = download_url
                         numbers += 1
@@ -70,12 +81,9 @@ class download(object):
 
     Returns:
         soup_text - 章节内容(string)
-
-    Modify:
-        2017-05-06
     """
 
-    def Downloader(self, url):
+    def downloader(self, url):
         download_req = request.Request(url=url, headers=self.__head)
         download_response = request.urlopen(download_req)
         download_html = download_response.read().decode('gbk', 'ignore')
@@ -93,35 +101,18 @@ class download(object):
         text - 章节内容(string)
 
     Returns:
-        无
-
-    Modify:
-        2017-05-06
     """
-
-    def Writer(self, name, path, text):
-        write_flag = True
-        with open(path, 'a', encoding='utf-8') as f:
-            f.write(name + '\n\n')
-            for each in text:
-                if each == 'h':
-                    write_flag = False
-                if write_flag == True and each != ' ':
-                    f.write(each)
-                if write_flag == True and each == '\r':
-                    f.write('\n')
-            f.write('\n\n')
 
 
 if __name__ == "__main__":
-    print("\n\t\t欢迎使用《笔趣看》小说下载小工具\n\n\t\t作者:Jack-Cui\t时间:2017-05-06\n")
-    print("*************************************************************************")
-
+    # print("\n\t\t欢迎使用《笔趣看》小说下载小工具\n\n\t\t\n")
+    # print("*************************************************************************")
     # 小说地址
-    target_url = str(input("请输入小说目录下载地址:\n"))
+    # target_url = str(input("请输入小说目录下载地址:\n"))
+    target_url = 'https://www.biqukan.com/2_2760/'
 
     # 实例化下载类
-    d = download(target=target_url)
+    d = Download(target=target_url)
     name, numbers, url_dict = d.get_download_url()
     if name in os.listdir():
         os.remove(name)
@@ -130,7 +121,7 @@ if __name__ == "__main__":
     # 下载中
     print("《%s》下载中:" % name[:-4])
     for key, value in url_dict.items():
-        d.Writer(key, name, d.Downloader(value))
+        writer(key, name, d.downloader(value))
         sys.stdout.write("已下载:%.3f%%" % float(index / numbers) + '\r')
         sys.stdout.flush()
         index += 1
